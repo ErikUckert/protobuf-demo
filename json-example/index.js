@@ -1,3 +1,4 @@
+const fs = require('fs');
 const employees = [];
 
 employees.push({
@@ -12,4 +13,5 @@ employees.push({
     'id': 100 
 });
 
+fs.writeFileSync('employeedata.json', JSON.stringify(employees))
 console.log(JSON.stringify(employees));
