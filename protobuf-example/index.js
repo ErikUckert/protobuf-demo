@@ -1,4 +1,5 @@
 const Schema = require('./employees_pb');
+const fs = require('fs');
 
 const erik = new Schema.Employee();
 
@@ -21,5 +22,8 @@ rick.setSalary(500);
 const employees = new Schema.Employees();
 
 employees.getEmployeesList().push((erik));
+employees.getEmployeesList().push((jack));
+employees.getEmployeesList().push((rick));
 
-console.log(employees.getEmployeesList());
+const serializedMsg = employees.serializeBinary();
+fs.writeFileSync('serializedMsg.bin', serializedMsg)
